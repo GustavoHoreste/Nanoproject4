@@ -19,27 +19,25 @@ class CloudKitViewModel: ObservableObject{
     
     private func getiCloudStatus(){
         
-        CKContainer.default().accountStatus { returnedStatus, retornedError in
+        CKContainer.default().accountStatus { [weak self]returnedStatus, retornedError in
             DispatchQueue.main.async {
                 switch returnedStatus {
                 case .available:
-                    break
+                    self?.isSignedInToiCloud = true
                 case .noAccount:
-                    break
+                    self?.error = CloudKitError.iCloudAccountNotFound.rawValue
                 case .couldNotDetermine:
-                    break
+                    self?.error = CloudKitError.iCloudAccountNotDetermined.rawValue
                 case .restricted:
-                    break
-                case .temporarilyUnavailable:
-                    break
+                    self?.error = CloudKitError.iCloudAccountRestricted.rawValue
                 default:
-                    break
+                    self?.error = CloudKitError.iCloudAccountUnknown.rawValue
                 }
             }
         }
     }
     
-    enum CloudKitError: LocalizedError{
+    enum CloudKitError: String, LocalizedError{
         case iCloudAccountNotFound
         case iCloudAccountNotDetermined
         case iCloudAccountRestricted

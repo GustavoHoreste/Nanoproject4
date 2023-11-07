@@ -35,12 +35,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6EA69EBF2AFAAAB600A58B0A /* CloudKit */ = {
+		6EA69EBF2AFAAAB600A58B0A /* CloudKitTest */ = {
 			isa = PBXGroup;
 			children = (
 				6EA69EC02AFAAACB00A58B0A /* CloudKitUser.swift */,
 			);
-			path = CloudKit;
+			path = CloudKitTest;
 			sourceTree = "<group>";
 		};
 		D9AFA2822AF955D0004E90F7 = {
@@ -65,7 +65,7 @@
 				6EA69EC22AFAAB4200A58B0A /* NanoProject4.entitlements */,
 				D9AFA28E2AF955D0004E90F7 /* NanoProject4App.swift */,
 				D9AFA2902AF955D0004E90F7 /* ContentView.swift */,
-				6EA69EBF2AFAAAB600A58B0A /* CloudKit */,
+				6EA69EBF2AFAAAB600A58B0A /* CloudKitTest */,
 				D9AFA2922AF955D1004E90F7 /* Assets.xcassets */,
 				D9AFA2942AF955D1004E90F7 /* Preview Content */,
 			);
