@@ -17,5 +17,5 @@ struct RestaurantModel: Identifiable{
     let imageRest: String
     let locationRest: String
     let rating: String
-    let isFavorito: Bool
+//    let isFavorito: Bool
 }
