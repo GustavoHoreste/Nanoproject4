@@ -50,8 +50,10 @@ struct CloudKitUser: View {
     @StateObject private var vm = CloudKitViewModel()
     
     var body: some View {
-        Text("IS SIGNED IN: \(vm.isSignedInToiCloud.description.uppercased())")
-        Text(vm.error)
+        VStack{
+            Text("IS SIGNED IN: \(vm.isSignedInToiCloud.description.uppercased())")
+            Text(vm.error)
+        }
     }
 }
 
