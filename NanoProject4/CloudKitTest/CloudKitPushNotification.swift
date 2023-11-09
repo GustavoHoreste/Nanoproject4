@@ -31,23 +31,33 @@ class ClouKitPushNotificationViewModel: ObservableObject {
     }
     
     func subscribeToNotifications(){
-        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { success, error in
+            guard success else { return }
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
     }
     
 }
 
 struct CloudKitPushNotification: View {
-    
+
     @StateObject private var vm = ClouKitPushNotificationViewModel()
-    
+    @StateObject private var pushNotificationManager = PushNotificationManager()
+
     var body: some View {
         VStack(spacing: 40) {
             Button("Request notification permissions") {
                 vm.requestNotificationPermissions()
             }
-            
+
             Button("Subscribe to notifications") {
-                
+                vm.subscribeToNotifications()
+            }
+
+            Button("Solicitar Permissões de Notificação") {
+                pushNotificationManager.requestNotificationPermissions()
             }
         }
     }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6EA69EC12AFAAACB00A58B0A /* CloudKitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA69EC02AFAAACB00A58B0A /* CloudKitUser.swift */; };
 		6EA69EE52AFC001F00A58B0A /* CloudKitPushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA69EE42AFC001F00A58B0A /* CloudKitPushNotification.swift */; };
+		6EA69EE72AFC146D00A58B0A /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA69EE62AFC146D00A58B0A /* PushNotificationManager.swift */; };
 		D9AFA28F2AF955D0004E90F7 /* NanoProject4App.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AFA28E2AF955D0004E90F7 /* NanoProject4App.swift */; };
 		D9AFA2912AF955D0004E90F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AFA2902AF955D0004E90F7 /* ContentView.swift */; };
 		D9AFA2932AF955D1004E90F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9AFA2922AF955D1004E90F7 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 		6EA69EC02AFAAACB00A58B0A /* CloudKitUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitUser.swift; sourceTree = "<group>"; };
 		6EA69EC22AFAAB4200A58B0A /* NanoProject4.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NanoProject4.entitlements; sourceTree = "<group>"; };
 		6EA69EE42AFC001F00A58B0A /* CloudKitPushNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitPushNotification.swift; sourceTree = "<group>"; };
+		6EA69EE62AFC146D00A58B0A /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		D9AFA28B2AF955D0004E90F7 /* NanoProject4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NanoProject4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9AFA28E2AF955D0004E90F7 /* NanoProject4App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanoProject4App.swift; sourceTree = "<group>"; };
 		D9AFA2902AF955D0004E90F7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,6 +44,7 @@
 			children = (
 				6EA69EC02AFAAACB00A58B0A /* CloudKitUser.swift */,
 				6EA69EE42AFC001F00A58B0A /* CloudKitPushNotification.swift */,
+				6EA69EE62AFC146D00A58B0A /* PushNotificationManager.swift */,
 			);
 			path = CloudKitTest;
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 			files = (
 				D9AFA2912AF955D0004E90F7 /* ContentView.swift in Sources */,
 				6EA69EC12AFAAACB00A58B0A /* CloudKitUser.swift in Sources */,
+				6EA69EE72AFC146D00A58B0A /* PushNotificationManager.swift in Sources */,
 				D9AFA28F2AF955D0004E90F7 /* NanoProject4App.swift in Sources */,
 				6EA69EE52AFC001F00A58B0A /* CloudKitPushNotification.swift in Sources */,
 			);
