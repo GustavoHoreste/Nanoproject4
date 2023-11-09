@@ -12,6 +12,7 @@
 		D96DDA392AFAC5A400352D63 /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96DDA382AFAC5A400352D63 /* RestaurantViewModel.swift */; };
 		D96DDA3B2AFAC5CF00352D63 /* RestaurantRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96DDA3A2AFAC5CF00352D63 /* RestaurantRowView.swift */; };
 		D96DDA3D2AFAC71100352D63 /* CellRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96DDA3C2AFAC71100352D63 /* CellRestaurantView.swift */; };
+		D96DDA412AFBFB3E00352D63 /* SheetNewRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96DDA402AFBFB3E00352D63 /* SheetNewRest.swift */; };
 		D9AFA28F2AF955D0004E90F7 /* NanoProject4App.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AFA28E2AF955D0004E90F7 /* NanoProject4App.swift */; };
 		D9AFA2912AF955D0004E90F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AFA2902AF955D0004E90F7 /* ContentView.swift */; };
 		D9AFA2932AF955D1004E90F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9AFA2922AF955D1004E90F7 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		D96DDA382AFAC5A400352D63 /* RestaurantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
 		D96DDA3A2AFAC5CF00352D63 /* RestaurantRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantRowView.swift; sourceTree = "<group>"; };
 		D96DDA3C2AFAC71100352D63 /* CellRestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellRestaurantView.swift; sourceTree = "<group>"; };
+		D96DDA402AFBFB3E00352D63 /* SheetNewRest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetNewRest.swift; sourceTree = "<group>"; };
 		D9AFA28B2AF955D0004E90F7 /* NanoProject4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NanoProject4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9AFA28E2AF955D0004E90F7 /* NanoProject4App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanoProject4App.swift; sourceTree = "<group>"; };
 		D9AFA2902AF955D0004E90F7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				D94D4F322AFAB3BA0064EBFD /* RestaurantView.swift */,
 				D96DDA3A2AFAC5CF00352D63 /* RestaurantRowView.swift */,
 				D96DDA3C2AFAC71100352D63 /* CellRestaurantView.swift */,
+				D96DDA402AFBFB3E00352D63 /* SheetNewRest.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -107,9 +110,9 @@
 			isa = PBXGroup;
 			children = (
 				D96DDA352AFAC55400352D63 /* View */,
+				D96DDA342AFAC53700352D63 /* Model */,
 				D96DDA332AFAC50500352D63 /* System */,
 				D9AFA2942AF955D1004E90F7 /* Preview Content */,
-				D96DDA342AFAC53700352D63 /* Model */,
 			);
 			path = NanoProject4;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				D96DDA392AFAC5A400352D63 /* RestaurantViewModel.swift in Sources */,
 				D96DDA322AFAC4EA00352D63 /* RestaurantsModel.swift in Sources */,
 				D96DDA3B2AFAC5CF00352D63 /* RestaurantRowView.swift in Sources */,
+				D96DDA412AFBFB3E00352D63 /* SheetNewRest.swift in Sources */,
 				D94D4F332AFAB3BA0064EBFD /* RestaurantView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

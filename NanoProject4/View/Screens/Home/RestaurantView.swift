@@ -14,7 +14,6 @@ struct RestaurantView: View {
         NavigationStack{
             ScrollView{
                 VStack(spacing: 21){
-                    
                     ForEach(viewModel.Restaurants) { restaurant in
                         NavigationLink {
                             RestaurantRow(restaurant: restaurant)
@@ -23,20 +22,20 @@ struct RestaurantView: View {
                         }
                     }
                 }.sheet(isPresented: $viewModel.isOpen, content: {
-                    Text("oi")
+                    SheetNewRest()
                 })
+                
             }.navigationTitle("Restaurantes")
                 .toolbar {
                     Button(action: {
-                        print("certo")
                         viewModel.togleSheetAddRest()
                         
                     }, label: {
-                        Label("Adicionar", systemImage: "plus")
-                        
+                        Image(systemName: "plus")
+                            .tint(.gray)
+    
                     }).buttonStyle(.borderedProminent)
                 }
-                
         }
     }
 }

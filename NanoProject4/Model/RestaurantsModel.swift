@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 //MARK: - Model
@@ -14,8 +15,12 @@ struct RestaurantModel: Identifiable{
     let id = UUID()
     let name: String
     let description: String
-    let imageRest: String
+    let imageRest: UIImage?
     let locationRest: String
     let rating: String
-    let isFavorito: Bool
+    var isfavorite: Bool
+    
+    mutating func togleIsfavorite(){
+        self.isfavorite.toggle()
+    }
 }
