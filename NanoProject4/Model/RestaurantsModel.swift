@@ -11,7 +11,6 @@ import UIKit
 
 
 //MARK: - Model
-
 struct RestaurantModel: Identifiable{
     let id = UUID()
     let name: String
@@ -25,6 +24,7 @@ struct RestaurantModel: Identifiable{
         self.isfavorite.toggle()
     }
 }
+
 
 struct RestaurantsCloudModel: Hashable{
     let recordID: CKRecord
