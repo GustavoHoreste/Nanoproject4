@@ -35,10 +35,25 @@ class ClouKitPushNotificationViewModel: ObservableObject {
             guard success else { return }
             DispatchQueue.main.async {
                 UIApplication.shared.registerForRemoteNotifications()
+        let predicate = NSPredicate(value: true)
+        
+        let subscription = CKQuerySubscription(recordType: "Notification", predicate: predicate, subscriptionID: "Notification_requested", options: .firesOnRecordCreation)
+        
+        let notification = CKSubscription.NotificationInfo()
+        notification.title = "There's a new notification"
+        notification.alertBody = "Check this new restourant"
+        notification.soundName = "default"
+        
+        subscription.notificationInfo = notification
+        
+        CKContainer.default().publicCloudDatabase.save(subscription) { returnedSubscription, returnedError in
+            if let error = returnedError {
+                print(error)
+            } else {
+                print("Succesfully Subscribed to Notifications")
             }
         }
     }
-    
 }
 
 struct CloudKitPushNotification: View {
