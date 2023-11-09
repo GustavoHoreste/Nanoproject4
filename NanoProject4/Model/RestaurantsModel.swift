@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CloudKit
 import UIKit
 
 
@@ -18,9 +19,18 @@ struct RestaurantModel: Identifiable{
     let imageRest: UIImage?
     let locationRest: String
     let rating: String
-     var isfavorite: Bool
+    var isfavorite: Bool
     
     mutating func togleIsfavorite(){
         self.isfavorite.toggle()
     }
 }
+
+struct RestaurantsCloudModel: Hashable{
+    let recordID: CKRecord
+    let nameRest: String
+    let description: String
+    let restImage: URL?
+}
+
+
