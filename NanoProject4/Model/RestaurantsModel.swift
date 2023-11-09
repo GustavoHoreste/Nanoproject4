@@ -18,7 +18,7 @@ struct RestaurantModel: Identifiable{
     let imageRest: UIImage?
     let locationRest: String
     let rating: String
-    var isfavorite: Bool
+     var isfavorite: Bool
     
     mutating func togleIsfavorite(){
         self.isfavorite.toggle()

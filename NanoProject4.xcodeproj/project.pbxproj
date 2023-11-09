@@ -17,6 +17,10 @@
 		D9AFA2912AF955D0004E90F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AFA2902AF955D0004E90F7 /* ContentView.swift */; };
 		D9AFA2932AF955D1004E90F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9AFA2922AF955D1004E90F7 /* Assets.xcassets */; };
 		D9AFA2962AF955D1004E90F7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9AFA2952AF955D1004E90F7 /* Preview Assets.xcassets */; };
+		D9C319F72AFD62C400CD4EC0 /* CloudKitCrudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C319F32AFD62C400CD4EC0 /* CloudKitCrudView.swift */; };
+		D9C319F82AFD62C400CD4EC0 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C319F42AFD62C400CD4EC0 /* PushNotificationManager.swift */; };
+		D9C319F92AFD62C400CD4EC0 /* CloudKitPushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C319F52AFD62C400CD4EC0 /* CloudKitPushNotification.swift */; };
+		D9C319FA2AFD62C400CD4EC0 /* CloudKitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C319F62AFD62C400CD4EC0 /* CloudKitUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +35,11 @@
 		D9AFA2902AF955D0004E90F7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D9AFA2922AF955D1004E90F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9AFA2952AF955D1004E90F7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D9C319E62AFD612F00CD4EC0 /* NanoProject4.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NanoProject4.entitlements; sourceTree = "<group>"; };
+		D9C319F32AFD62C400CD4EC0 /* CloudKitCrudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitCrudView.swift; sourceTree = "<group>"; };
+		D9C319F42AFD62C400CD4EC0 /* PushNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
+		D9C319F52AFD62C400CD4EC0 /* CloudKitPushNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitPushNotification.swift; sourceTree = "<group>"; };
+		D9C319F62AFD62C400CD4EC0 /* CloudKitUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +66,7 @@
 		D96DDA342AFAC53700352D63 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D9C319F22AFD62AA00CD4EC0 /* CloudKit */,
 				D96DDA312AFAC4EA00352D63 /* RestaurantsModel.swift */,
 			);
 			path = Model;
@@ -109,6 +119,7 @@
 		D9AFA28D2AF955D0004E90F7 /* NanoProject4 */ = {
 			isa = PBXGroup;
 			children = (
+				D9C319E62AFD612F00CD4EC0 /* NanoProject4.entitlements */,
 				D96DDA352AFAC55400352D63 /* View */,
 				D96DDA342AFAC53700352D63 /* Model */,
 				D96DDA332AFAC50500352D63 /* System */,
@@ -123,6 +134,17 @@
 				D9AFA2952AF955D1004E90F7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D9C319F22AFD62AA00CD4EC0 /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				D9C319F32AFD62C400CD4EC0 /* CloudKitCrudView.swift */,
+				D9C319F52AFD62C400CD4EC0 /* CloudKitPushNotification.swift */,
+				D9C319F62AFD62C400CD4EC0 /* CloudKitUser.swift */,
+				D9C319F42AFD62C400CD4EC0 /* PushNotificationManager.swift */,
+			);
+			path = CloudKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,12 +219,16 @@
 			files = (
 				D9AFA2912AF955D0004E90F7 /* ContentView.swift in Sources */,
 				D9AFA28F2AF955D0004E90F7 /* NanoProject4App.swift in Sources */,
+				D9C319F82AFD62C400CD4EC0 /* PushNotificationManager.swift in Sources */,
 				D96DDA3D2AFAC71100352D63 /* CellRestaurantView.swift in Sources */,
+				D9C319F72AFD62C400CD4EC0 /* CloudKitCrudView.swift in Sources */,
 				D96DDA392AFAC5A400352D63 /* RestaurantViewModel.swift in Sources */,
 				D96DDA322AFAC4EA00352D63 /* RestaurantsModel.swift in Sources */,
 				D96DDA3B2AFAC5CF00352D63 /* RestaurantRowView.swift in Sources */,
+				D9C319F92AFD62C400CD4EC0 /* CloudKitPushNotification.swift in Sources */,
 				D96DDA412AFBFB3E00352D63 /* SheetNewRest.swift in Sources */,
 				D94D4F332AFAB3BA0064EBFD /* RestaurantView.swift in Sources */,
+				D9C319FA2AFD62C400CD4EC0 /* CloudKitUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +359,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NanoProject4/NanoProject4.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NanoProject4/Preview Content\"";
@@ -362,6 +389,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NanoProject4/NanoProject4.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NanoProject4/Preview Content\"";
