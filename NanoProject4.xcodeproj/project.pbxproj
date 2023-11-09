@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E23CCED2AFD5EEE0001E677 /* View in Resources */ = {isa = PBXBuildFile; fileRef = 6E23CCEA2AFD5EEE0001E677 /* View */; };
+		6E23CCEE2AFD5EEE0001E677 /* Model in Resources */ = {isa = PBXBuildFile; fileRef = 6E23CCEB2AFD5EEE0001E677 /* Model */; };
+		6E23CCEF2AFD5EEE0001E677 /* System in Resources */ = {isa = PBXBuildFile; fileRef = 6E23CCEC2AFD5EEE0001E677 /* System */; };
 		6EA69EC12AFAAACB00A58B0A /* CloudKitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA69EC02AFAAACB00A58B0A /* CloudKitUser.swift */; };
 		6EA69EE52AFC001F00A58B0A /* CloudKitPushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA69EE42AFC001F00A58B0A /* CloudKitPushNotification.swift */; };
 		6EA69EE72AFC146D00A58B0A /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA69EE62AFC146D00A58B0A /* PushNotificationManager.swift */; };
@@ -18,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6E23CCEA2AFD5EEE0001E677 /* View */ = {isa = PBXFileReference; lastKnownFileType = folder; path = View; sourceTree = "<group>"; };
+		6E23CCEB2AFD5EEE0001E677 /* Model */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Model; sourceTree = "<group>"; };
+		6E23CCEC2AFD5EEE0001E677 /* System */ = {isa = PBXFileReference; lastKnownFileType = folder; path = System; sourceTree = "<group>"; };
 		6EA69EC02AFAAACB00A58B0A /* CloudKitUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitUser.swift; sourceTree = "<group>"; };
 		6EA69EC22AFAAB4200A58B0A /* NanoProject4.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NanoProject4.entitlements; sourceTree = "<group>"; };
 		6EA69EE42AFC001F00A58B0A /* CloudKitPushNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitPushNotification.swift; sourceTree = "<group>"; };
@@ -73,6 +79,9 @@
 			children = (
 				6EA69EC22AFAAB4200A58B0A /* NanoProject4.entitlements */,
 				D9AFA28E2AF955D0004E90F7 /* NanoProject4App.swift */,
+				6E23CCEB2AFD5EEE0001E677 /* Model */,
+				6E23CCEC2AFD5EEE0001E677 /* System */,
+				6E23CCEA2AFD5EEE0001E677 /* View */,
 				D9AFA2902AF955D0004E90F7 /* ContentView.swift */,
 				6EA69EBF2AFAAAB600A58B0A /* CloudKitTest */,
 				D9AFA2922AF955D1004E90F7 /* Assets.xcassets */,
@@ -147,8 +156,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E23CCEF2AFD5EEE0001E677 /* System in Resources */,
 				D9AFA2962AF955D1004E90F7 /* Preview Assets.xcassets in Resources */,
 				D9AFA2932AF955D1004E90F7 /* Assets.xcassets in Resources */,
+				6E23CCEE2AFD5EEE0001E677 /* Model in Resources */,
+				6E23CCED2AFD5EEE0001E677 /* View in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
