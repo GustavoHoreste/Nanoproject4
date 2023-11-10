@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RestaurantView: View {
-    @EnvironmentObject var viewModel: RestaurantViewModel
+    @StateObject var viewModel = RestaurantViewModel.shared
     
     var body: some View {
         NavigationStack{
@@ -37,5 +37,4 @@ struct RestaurantView: View {
 
 #Preview {
     RestaurantView()
-        .environmentObject(RestaurantViewModel())
 }

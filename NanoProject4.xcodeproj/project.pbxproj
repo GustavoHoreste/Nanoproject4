@@ -23,6 +23,9 @@
 		D9C319FA2AFD62C400CD4EC0 /* CloudKitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C319F62AFD62C400CD4EC0 /* CloudKitUser.swift */; };
 		D9C319FC2AFD683B00CD4EC0 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C319FB2AFD683B00CD4EC0 /* CloudKitManager.swift */; };
 		D9C319FE2AFD7A3200CD4EC0 /* RestaurantListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C319FD2AFD7A3200CD4EC0 /* RestaurantListView.swift */; };
+		E892763F2AFE9F4600EFA538 /* RestaurantIntentPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E892763E2AFE9F4600EFA538 /* RestaurantIntentPreview.swift */; };
+		E89276412AFE9F5A00EFA538 /* RandomRestaurantIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89276402AFE9F5A00EFA538 /* RandomRestaurantIntent.swift */; };
+		E89276432AFE9F7100EFA538 /* IntentsShortcutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89276422AFE9F7100EFA538 /* IntentsShortcutProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		D9C319F62AFD62C400CD4EC0 /* CloudKitUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitUser.swift; sourceTree = "<group>"; };
 		D9C319FB2AFD683B00CD4EC0 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		D9C319FD2AFD7A3200CD4EC0 /* RestaurantListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListView.swift; sourceTree = "<group>"; };
+		E892763E2AFE9F4600EFA538 /* RestaurantIntentPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantIntentPreview.swift; sourceTree = "<group>"; };
+		E89276402AFE9F5A00EFA538 /* RandomRestaurantIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomRestaurantIntent.swift; sourceTree = "<group>"; };
+		E89276422AFE9F7100EFA538 /* IntentsShortcutProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentsShortcutProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +130,8 @@
 		D9AFA28D2AF955D0004E90F7 /* NanoProject4 */ = {
 			isa = PBXGroup;
 			children = (
+				E892763D2AFE9F2200EFA538 /* Shortcuts */,
+				E892763B2AFE9F1600EFA538 /* Intents */,
 				D9C319E62AFD612F00CD4EC0 /* NanoProject4.entitlements */,
 				D96DDA352AFAC55400352D63 /* View */,
 				D96DDA342AFAC53700352D63 /* Model */,
@@ -151,6 +159,31 @@
 				D9C319FB2AFD683B00CD4EC0 /* CloudKitManager.swift */,
 			);
 			path = CloudKit;
+			sourceTree = "<group>";
+		};
+		E892763B2AFE9F1600EFA538 /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				E892763C2AFE9F1C00EFA538 /* Preview */,
+				E89276402AFE9F5A00EFA538 /* RandomRestaurantIntent.swift */,
+			);
+			path = Intents;
+			sourceTree = "<group>";
+		};
+		E892763C2AFE9F1C00EFA538 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				E892763E2AFE9F4600EFA538 /* RestaurantIntentPreview.swift */,
+			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
+		E892763D2AFE9F2200EFA538 /* Shortcuts */ = {
+			isa = PBXGroup;
+			children = (
+				E89276422AFE9F7100EFA538 /* IntentsShortcutProvider.swift */,
+			);
+			path = Shortcuts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,7 +258,9 @@
 			files = (
 				D9AFA2912AF955D0004E90F7 /* ContentView.swift in Sources */,
 				D9AFA28F2AF955D0004E90F7 /* NanoProject4App.swift in Sources */,
+				E89276412AFE9F5A00EFA538 /* RandomRestaurantIntent.swift in Sources */,
 				D9C319F82AFD62C400CD4EC0 /* PushNotificationManager.swift in Sources */,
+				E89276432AFE9F7100EFA538 /* IntentsShortcutProvider.swift in Sources */,
 				D96DDA3D2AFAC71100352D63 /* CellRestaurantView.swift in Sources */,
 				D9C319F72AFD62C400CD4EC0 /* CloudKitCrudView.swift in Sources */,
 				D96DDA392AFAC5A400352D63 /* RestaurantViewModel.swift in Sources */,
@@ -235,6 +270,7 @@
 				D9C319F92AFD62C400CD4EC0 /* CloudKitPushNotification.swift in Sources */,
 				D96DDA412AFBFB3E00352D63 /* SheetNewRest.swift in Sources */,
 				D94D4F332AFAB3BA0064EBFD /* RestaurantView.swift in Sources */,
+				E892763F2AFE9F4600EFA538 /* RestaurantIntentPreview.swift in Sources */,
 				D9C319FA2AFD62C400CD4EC0 /* CloudKitUser.swift in Sources */,
 				D9C319FC2AFD683B00CD4EC0 /* CloudKitManager.swift in Sources */,
 			);
