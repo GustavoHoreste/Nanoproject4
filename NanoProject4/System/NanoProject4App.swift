@@ -13,9 +13,10 @@ struct NanoProject4App: App {
     
     var body: some Scene {
         WindowGroup {
-            CloudKitPushNotification()
-//            RestaurantView()
-//                .environmentObject(viewModel)
+//            CloudKitPushNotification()
+            
+            RestaurantView()
+                .environmentObject(viewModel)
         }
     }
 }

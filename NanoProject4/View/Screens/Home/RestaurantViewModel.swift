@@ -10,90 +10,82 @@ import SwiftUI
 import PhotosUI
 
 
-//class ImagePickerViewModel: ObservableObject{
-//    @Published  var selectedImage: UIImage? = nil
-//    @Published var imageSelection: PhotosPickerItem? = nil{
-//        didSet{
-//            setImage(from: imageSelection)
-//        }
-//    }
-//    
-//    private func setImage(from selection: PhotosPickerItem?){
-//        guard let selection else { return }
-//        
-//        Task{
-//            if let data = try? await selection.loadTransferable(type: Data.self){
-//                if let uiImage = UIImage(data: data){
-//                    selectedImage = uiImage
-//                }
-//            }
-//        }
-//    }
-//    
-//}
 
 //MARK: - ViewModel
 class RestaurantViewModel: ObservableObject{
 
-   @Published var isOpen: Bool = false
-   @Published var nameRest: String = ""
-   @Published var description: String = ""
-
-   @Published  var selectedImage: UIImage? = nil
-   @Published var imageSelection: PhotosPickerItem? = nil{
-        didSet{
-            setImage(from: imageSelection)
-        }
-    }
+    @Published var restaurants: [RestaurantModel] = RestaurantsAsset.restaurants
+    @Published var isOpenSheet: Bool = false
+    @Published var description: String = ""
+    @Published var nameRest: String = ""
     
-   @Published var Restaurants: [RestaurantModel] = [
-        RestaurantModel(name: "Apache Hamburgueria",
-                        description: "hamburgueria hambúrguer burguer burger smash blend sanduíche artesanal angus hot dog cachorro quente pizzaria pizza crepe pastel pastelaria esfiha esfirra massas lasanha macarrão bolonhesa peito coxinha da asa asinha coxa e sobrecoxa frango frito assado grelhado feijoada carne de sol picanha costela costelinha fraldinha contra filé mignon strogonoff parrilla maminha alcatra churrascaria churrasco churrasquinho espeto espetinho jantinha janta almoço refeição prato executivo restaurante marmita gourmet acaiteria esuíno suína risoto fettuccine petisco frutos do mar camarão peixe barbecue batata saudável fitness açaí",
-                        imageRest: UIImage(resource: .restauranteAsset),
-                        locationRest: "Vicente-Pires",
-                        rating: "4.9",
-                        isfavorite: false)
-    ]
-    
-    
-    func togleSheetAddRest(){
-        self.isOpen.toggle()
-    }
-    
-    func creatNewRestaurant(){
-        print(selectedImage as Any)
-        self.Restaurants.append(RestaurantModel(name: nameRest, description: description, imageRest: selectedImage, locationRest: "Teste", rating: "4.9", isfavorite: false))
-    }
-    
-    private func setImage(from selection: PhotosPickerItem?){
-        guard let selection else { return }
-        
-        Task{
-            if let data = try? await selection.loadTransferable(type: Data.self){
-                if let uiImage = UIImage(data: data){
-                    selectedImage = uiImage
+    @Published  var selectedImage: UIImage? = nil
+    @Published var imageSelection: PhotosPickerItem? = nil{
+            didSet{
+                Task{
+                    try? await setImage(from: imageSelection)
                 }
             }
         }
+    
+  
+    public func togleSheetAddRest(){
+        self.isOpenSheet.toggle()
     }
     
-    func getPhotoInAlbum(){
-        print("escolhi uma foto")
-    }
     
-    func takePhoto(){
-        print("peguei uma foto")
-    }
-    
-    func cancelMenu(){
-        
-    }
-    
-    func resetVariables(){
+    public func resetVariables(){
         nameRest = ""
         description = ""
         selectedImage = nil
         imageSelection = nil
     }
+    
+    
+    public func creatNewRestaurant(){
+        let newRestaurant = RestaurantModel(name: nameRest,
+                                            description: description,
+                                            imageRest: selectedImage,
+                                            locationRest: "Teste",
+                                            rating: "4.9",
+                                            isfavorite: false)
+        self.restaurants.append(newRestaurant)
+    }
+    
+    
+//    public func toogleValueIsfavorite(from restaurant: RestaurantModel){
+//        var imatableRestaurant = restaurant
+//        imatableRestaurant.isfavorite.toggle()
+//    }
+    
+    
+    ////funcao que recebe um fotoPicker e converte em UIImage
+    private func setImage(from selection: PhotosPickerItem?) async throws {
+        guard let selection else { return }
+        do{
+            if let data = try await selection.loadTransferable(type: Data.self){
+                selectedImage = UIImage(data: data)
+            }
+        }catch{
+            print("🚨 -> Error em converter o data do picker para UIImage")
+        }
+        
+    }
 }
+
+
+//MARK: - Instancia asset de RestaurantModel para teste
+struct RestaurantsAsset{
+   static let restaurants: [RestaurantModel] = [
+         RestaurantModel(name: "Apache Hamburgueria",
+                         description: "hamburgueria hambúrguer burguer burger smash blend sanduíche artesanal angus hot dog cachorro quente pizzaria pizza crepe pastel pastelaria esfiha esfirra massas lasanha macarrão bolonhesa peito coxinha da asa asinha coxa e sobrecoxa frango frito assado grelhado feijoada carne de sol picanha costela costelinha fraldinha contra filé mignon strogonoff parrilla maminha alcatra churrascaria churrasco churrasquinho espeto espetinho jantinha janta almoço refeição prato executivo restaurante marmita gourmet acaiteria esuíno suína risoto fettuccine petisco frutos do mar camarão peixe barbecue batata saudável fitness açaí",
+                         imageRest: UIImage(resource: .restauranteAsset),
+                         locationRest: "Vicente-Pires",
+                         rating: "4.9",
+                         isfavorite: false)
+     ]
+}
+
+
+
 

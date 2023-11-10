@@ -22,6 +22,7 @@
 		D9C319F92AFD62C400CD4EC0 /* CloudKitPushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C319F52AFD62C400CD4EC0 /* CloudKitPushNotification.swift */; };
 		D9C319FA2AFD62C400CD4EC0 /* CloudKitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C319F62AFD62C400CD4EC0 /* CloudKitUser.swift */; };
 		D9C319FC2AFD683B00CD4EC0 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C319FB2AFD683B00CD4EC0 /* CloudKitManager.swift */; };
+		D9C319FE2AFD7A3200CD4EC0 /* RestaurantListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C319FD2AFD7A3200CD4EC0 /* RestaurantListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		D9C319F52AFD62C400CD4EC0 /* CloudKitPushNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitPushNotification.swift; sourceTree = "<group>"; };
 		D9C319F62AFD62C400CD4EC0 /* CloudKitUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitUser.swift; sourceTree = "<group>"; };
 		D9C319FB2AFD683B00CD4EC0 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		D9C319FD2AFD7A3200CD4EC0 /* RestaurantListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				D96DDA3A2AFAC5CF00352D63 /* RestaurantRowView.swift */,
 				D96DDA3C2AFAC71100352D63 /* CellRestaurantView.swift */,
 				D96DDA402AFBFB3E00352D63 /* SheetNewRest.swift */,
+				D9C319FD2AFD7A3200CD4EC0 /* RestaurantListView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				D9C319F72AFD62C400CD4EC0 /* CloudKitCrudView.swift in Sources */,
 				D96DDA392AFAC5A400352D63 /* RestaurantViewModel.swift in Sources */,
 				D96DDA322AFAC4EA00352D63 /* RestaurantsModel.swift in Sources */,
+				D9C319FE2AFD7A3200CD4EC0 /* RestaurantListView.swift in Sources */,
 				D96DDA3B2AFAC5CF00352D63 /* RestaurantRowView.swift in Sources */,
 				D9C319F92AFD62C400CD4EC0 /* CloudKitPushNotification.swift in Sources */,
 				D96DDA412AFBFB3E00352D63 /* SheetNewRest.swift in Sources */,
