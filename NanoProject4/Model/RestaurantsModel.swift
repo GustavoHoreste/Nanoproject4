@@ -30,7 +30,6 @@ struct RestaurantsCloudModel: Hashable{
     let recordID: CKRecord
     let nameRest: String
     let description: String
-    let restImage: URL?
 }
 
 
