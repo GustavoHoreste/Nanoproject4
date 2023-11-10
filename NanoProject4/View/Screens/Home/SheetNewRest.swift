@@ -10,7 +10,7 @@ import PhotosUI
 
 struct SheetNewRest: View {
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var viewModel: RestaurantViewModel
+    @StateObject var viewModel = RestaurantViewModel.shared
     @State var isPresentPicker: Bool = false
     
 
@@ -54,7 +54,6 @@ struct SheetNewRest: View {
                 
                     Menu {
                         Button {
-                            viewModel.cancelMenu()
                         } label: {
                             Label("Cancel", systemImage: "xmark")
                         }
@@ -64,12 +63,7 @@ struct SheetNewRest: View {
                         } label: {
                             Label("Add Photo", systemImage: "photo.on.rectangle")
                         }
-                        
-//                        Button {
-//                            viewModel.takePhoto()
-//                        } label: {
-//                            Label("Camera", systemImage: "camera")
-//                        }
+    
                         
                     } label: {
                         Label("Imagem", systemImage: "filemenu.and.selection")
@@ -113,5 +107,4 @@ struct SheetNewRest: View {
 
 #Preview {
     SheetNewRest()
-        .environmentObject(RestaurantViewModel())
 }

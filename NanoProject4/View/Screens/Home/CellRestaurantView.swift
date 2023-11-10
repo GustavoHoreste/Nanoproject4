@@ -55,9 +55,5 @@ struct CellRestaurantView: View {
 }
 
 #Preview {
-    CellRestaurantView(restaurant: RestaurantModel(name: "Apache ",
-                                              description: "hamburgueria hambúrguer burguer burger smash blend sanduíche artesanal angus hot dog cachorro quente pizzaria pizza crepe pastel pastelaria esfiha esfirra massas lasanha macarrão bolonhesa peito coxinha da asa asinha coxa e sobrecoxa frango frito assado grelhado feijoada carne de sol picanha costela costelinha fraldinha contra filé mignon strogonoff parrilla maminha alcatra churrascaria churrasco churrasquinho espeto espetinho jantinha janta almoço refeição prato executivo restaurante marmita gourmet acaiteria esuíno suína risoto fettuccine petisco frutos do mar camarão peixe barbecue batata saudável fitness açaí",
-                                              imageRest: UIImage(resource: .restauranteAsset),
-                                              locationRest: "Vicente-Pires",
-                                                   rating: "4.9", isfavorite: false))
+    CellRestaurantView(restaurant: RestaurantsAsset.restaurants.first!)
 }
