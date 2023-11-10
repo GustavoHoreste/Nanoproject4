@@ -12,6 +12,7 @@ import UIKit
 
 //MARK: - Model
 struct RestaurantModel: Identifiable{
+    let recordID: CKRecord
     let id = UUID()
     let name: String
     let description: String
@@ -26,10 +27,10 @@ struct RestaurantModel: Identifiable{
 }
 
 
-struct RestaurantsCloudModel: Hashable{
-    let recordID: CKRecord
-    let nameRest: String
-    let description: String
-}
+//struct RestaurantsCloudModel: Hashable{
+//    let recordID: CKRecord
+//    let nameRest: String
+//    let description: String
+//}
 
 

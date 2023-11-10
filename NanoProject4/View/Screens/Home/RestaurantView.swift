@@ -9,10 +9,11 @@ import SwiftUI
 
 struct RestaurantView: View {
     @StateObject var viewModel = RestaurantViewModel.shared
+    @StateObject var cloudKitManager = CloudKitManager.shared
     
     var body: some View {
         NavigationStack{
-            RestaurantListView(restuarants: viewModel.restaurants)
+            RestaurantListView(restuarants: cloudKitManager.restaurants)
                 .navigationTitle("Restaurantes")
                 .sheet(isPresented: $viewModel.isOpenSheet, content: {
                     SheetNewRest()
@@ -20,6 +21,12 @@ struct RestaurantView: View {
                 .toolbar {
                     toolbarButton
                 }
+        }.onAppear{
+            cloudKitManager.fetchRequest()
+        }
+        .refreshable {
+            cloudKitManager.fetchRequest()
+
         }
     }
     

@@ -83,6 +83,7 @@ struct SheetNewRest: View {
                 Button("Adicionar") {
                     viewModel.creatNewRestaurant()
                     viewModel.resetVariables()
+                    CloudKitManager.shared.fetchRequest()
                     dismiss()
                     
                 }.buttonStyle(.borderedProminent)

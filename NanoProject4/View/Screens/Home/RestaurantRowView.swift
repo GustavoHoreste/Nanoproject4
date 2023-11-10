@@ -44,7 +44,7 @@ struct RestaurantRow: View {
                             
                             Button(action: {
 //                                self.vm.toogleValueIsfavorite(from: self.restaurant)
-                                
+                                print("Nome e: \(restaurant.name)")
                             }, label: {
                                 Image(systemName: restaurant.isfavorite ? "heart.fill" : "heart")
                                     .tint(.red)
