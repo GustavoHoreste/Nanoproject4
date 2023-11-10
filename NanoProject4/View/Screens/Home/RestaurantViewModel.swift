@@ -17,10 +17,10 @@ import PhotosUI
 //            setImage(from: imageSelection)
 //        }
 //    }
-//    
+//
 //    private func setImage(from selection: PhotosPickerItem?){
 //        guard let selection else { return }
-//        
+//
 //        Task{
 //            if let data = try? await selection.loadTransferable(type: Data.self){
 //                if let uiImage = UIImage(data: data){
@@ -29,11 +29,15 @@ import PhotosUI
 //            }
 //        }
 //    }
-//    
+//
 //}
 
 //MARK: - ViewModel
 class RestaurantViewModel: ObservableObject{
+    
+    static var shared = RestaurantViewModel()
+    
+    private init() {}
 
    @Published var isOpen: Bool = false
    @Published var nameRest: String = ""
@@ -52,9 +56,26 @@ class RestaurantViewModel: ObservableObject{
                         imageRest: UIImage(resource: .restauranteAsset),
                         locationRest: "Vicente-Pires",
                         rating: "4.9",
+                        isfavorite: false),
+        RestaurantModel(name: "Restaurante Sabores do Cerrado",
+                        description: "Descubra a autêntica culinária do cerrado brasileiro, onde sabores regionais se encontram para uma experiência única.",
+                        imageRest: UIImage(resource: .restauranteAsset),
+                        locationRest: "SHS Quadra 401, Bloco C, Asa Sul, Brasília",
+                        rating: "4.9",
+                        isfavorite: false),
+        RestaurantModel(name: "Prazeres do Planalto Grill",
+                        description: "Carnes suculentas, preparadas com maestria e servidas com um toque regional, celebrando os prazeres do planalto central.",
+                        imageRest: UIImage(resource: .restauranteAsset),
+                        locationRest: "SCS Quadra 3, Bloco A, Asa Sul, Brasília",
+                        rating: "4.9",
                         isfavorite: false)
     ]
     
+    public var random: RestaurantModel {
+        let idx = Int.random(in: 0...(Restaurants.count-1))
+        let restaurant = Restaurants[idx]
+        return restaurant
+    }
     
     func togleSheetAddRest(){
         self.isOpen.toggle()
