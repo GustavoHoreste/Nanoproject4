@@ -9,13 +9,12 @@ import SwiftUI
 
 @main
 struct NanoProject4App: App {
-    @StateObject var viewModel = RestaurantViewModel()
+    @StateObject var viewModel = RestaurantViewModel.shared
     
     var body: some Scene {
         WindowGroup {
             CloudKitPushNotification()
 //            RestaurantView()
-//                .environmentObject(viewModel)
         }
     }
 }
