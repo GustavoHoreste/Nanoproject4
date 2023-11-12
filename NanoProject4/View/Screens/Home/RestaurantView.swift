@@ -23,10 +23,12 @@ struct RestaurantView: View {
                 }
         }.onAppear{
             cloudKitManager.fetchRequest()
+            CloudKitPushNotificationViewModel.shared.requestNotificationPermissions()
+            CloudKitPushNotificationViewModel.shared.subscribeToNotifications()
         }
         .refreshable {
             cloudKitManager.fetchRequest()
-
+            
         }
     }
     
