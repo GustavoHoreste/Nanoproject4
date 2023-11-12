@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RestaurantRow: View {
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var vm: RestaurantViewModel
+    @StateObject var vm = RestaurantViewModel.shared
     var restaurant: RestaurantModel
     
     var body: some View {
@@ -43,8 +43,8 @@ struct RestaurantRow: View {
                                 .font(.title)
                             
                             Button(action: {
-//                                self.vm.toogleValueIsfavorite(from: self.restaurant)
-                                print("Nome e: \(restaurant.name)")
+                                self.vm.toggleFavoriteStatus(for: restaurant.id)
+                                
                             }, label: {
                                 Image(systemName: restaurant.isfavorite ? "heart.fill" : "heart")
                                     .tint(.red)

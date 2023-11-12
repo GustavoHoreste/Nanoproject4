@@ -12,18 +12,14 @@ import UIKit
 
 //MARK: - Model
 struct RestaurantModel: Identifiable{
-    let recordID: CKRecord
     let id = UUID()
+    let recordID: CKRecord
     let name: String
     let description: String
     let imageRest: UIImage?
     let locationRest: String
     let rating: String
     var isfavorite: Bool
-    
-    mutating func togleIsfavorite(){
-        self.isfavorite.toggle()
-    }
 }
 
 

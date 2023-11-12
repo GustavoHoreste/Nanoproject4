@@ -59,37 +59,37 @@ class RestaurantViewModel: ObservableObject{
                                             locationRest: "Teste",
                                             rating: "4.9",
                                             isfavorite: false)
-        
+        print(newRestaurant.id)
         CloudKitManager.shared.addItemInRecord(name: nameRest, description: description)
         
         self.restaurants.append(newRestaurant)
     }
-            
-            
-            
-            
-            
-            
-            
-            //    public func toogleValueIsfavorite(from restaurant: RestaurantModel){
-            //        var imatableRestaurant = restaurant
-            //        imatableRestaurant.isfavorite.toggle()
-            //    }
-            
-            
-            ////funcao que recebe um fotoPicker e converte em UIImage
-            private func setImage(from selection: PhotosPickerItem?) async throws {
-                guard let selection else { return }
-                do{
-                    if let data = try await selection.loadTransferable(type: Data.self){
-                        selectedImage = UIImage(data: data)
-                    }
-                }catch{
-                    print("🚨 -> Error em converter o data do picker para UIImage")
-                }
-                
-            }
+      
+        
+    public func toggleFavoriteStatus(for uuidItem: UUID) {
+        if let index = self.restaurants.firstIndex(where: { $0.id == uuidItem }) {
+            print("🚨 Valor antes do toggle: \(self.restaurants[index].isfavorite)")
+            self.restaurants[index].isfavorite.toggle()
+            print("✅ Valor depois do toggle: \(self.restaurants[index].isfavorite)")
+        } else {
+            print("ID não encontrado")
         }
+    }
+    
+    
+    ////funcao que recebe um fotoPicker e converte em UIImage
+    private func setImage(from selection: PhotosPickerItem?) async throws {
+        guard let selection else { return }
+        do{
+            if let data = try await selection.loadTransferable(type: Data.self){
+                selectedImage = UIImage(data: data)
+            }
+        }catch{
+            print("🚨 -> Error em converter o data do picker para UIImage")
+        }
+        
+    }
+}
 
 
 //MARK: - Instancia asset de RestaurantModel para teste

@@ -25,10 +25,11 @@ final class CloudKitManager: ObservableObject{
     }
     
     //MARK: - Adionar itens a um record
-   func addItemInRecord(name: String, description: String){
+    func addItemInRecord(name: String, description: String){
        let newRestaurant = CKRecord(recordType: IdentifierKeys.recordType.rawValue)
         newRestaurant["name"] = name
         newRestaurant["description"] = description
+//        newRestaurant["idItem"] = id.uuidString
         saveItens(record: newRestaurant)
     }
     
@@ -91,7 +92,8 @@ final class CloudKitManager: ObservableObject{
             if let error = error {
                 print("Error fetching records: \(error)")
             } else if let records = records {
-                let fetchedRestaurants = records.map { RestaurantModel(recordID: $0, name: $0["name"] as? String ?? "",
+                let fetchedRestaurants = records.map { RestaurantModel(recordID: $0,
+                                                                       name: $0["name"] as? String ?? "",
                                                                        description: $0["description"] as? String ?? "",
                                                                        imageRest: UIImage(resource: .restauranteAsset),
                                                                        locationRest: $0["namerest"] as? String ?? "",
