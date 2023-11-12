@@ -15,6 +15,21 @@ enum IdentifierKeys: String{
 
 final class CloudKitManager: ObservableObject{
     
+    private func sendPushNotification(for restaurantName: String) {
+            CloudKitPushNotificationViewModel.shared.sendPushNotification(restaurantName: restaurantName)
+        }
+    
+    func addItemInRecordAndNotify(name: String, description: String) {
+            let newRestaurant = CKRecord(recordType: IdentifierKeys.recordType.rawValue)
+            newRestaurant["name"] = name
+            newRestaurant["description"] = description
+
+            saveItens(record: newRestaurant)
+
+            // Envie notificação push para novos restaurantes
+            sendPushNotification(for: name)
+        }
+    
     static let shared = CloudKitManager()
     let dataBaseConteiner = CKContainer(identifier: IdentifierKeys.identifierContainer.rawValue).publicCloudDatabase
 

@@ -60,7 +60,7 @@ class RestaurantViewModel: ObservableObject{
                                             rating: "4.9",
                                             isfavorite: false)
         
-        CloudKitManager.shared.addItemInRecord(name: nameRest, description: description)
+        CloudKitManager.shared.addItemInRecordAndNotify(name: nameRest, description: description)
         
         self.restaurants.append(newRestaurant)
     }

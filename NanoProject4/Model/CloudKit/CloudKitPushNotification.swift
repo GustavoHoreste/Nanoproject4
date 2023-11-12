@@ -9,8 +9,8 @@ import SwiftUI
 import CloudKit
 import UserNotifications
 
-class ClouKitPushNotificationViewModel: ObservableObject {
-    
+class CloudKitPushNotificationViewModel: ObservableObject {
+    static let shared = CloudKitPushNotificationViewModel()
     func requestNotificationPermissions(){
         
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
@@ -25,12 +25,26 @@ class ClouKitPushNotificationViewModel: ObservableObject {
                 }
             }else{
                 print("Notification permmission failure.")
-                print("testee")
 
             }
         }
         
     }
+    
+    func sendPushNotification(restaurantName: String) {
+            let content = UNMutableNotificationContent()
+            content.title = "Novo Restaurante Adicionado"
+            content.body = "O restaurante \(restaurantName) foi adicionado."
+
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
+            UNUserNotificationCenter.current().add(request) { error in
+                if let error = error {
+                    print("Error sending push notification: \(error)")
+                } else {
+                    print("Push notification sent successfully")
+                }
+            }
+        }
     
     func subscribeToNotifications(){
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { success, error in
@@ -39,7 +53,7 @@ class ClouKitPushNotificationViewModel: ObservableObject {
                 UIApplication.shared.registerForRemoteNotifications()
                 let predicate = NSPredicate(value: true)
                 
-                let subscription = CKQuerySubscription(recordType: "Notification", predicate: predicate, subscriptionID: "Notification_requested", options: .firesOnRecordCreation)
+                let subscription = CKQuerySubscription(recordType: IdentifierKeys.recordType.rawValue, predicate: predicate, subscriptionID: "Restaurante_Adicionado", options: .firesOnRecordCreation)
                 
                 let notification = CKSubscription.NotificationInfo()
                 notification.title = "There's a new notification"
@@ -62,7 +76,7 @@ class ClouKitPushNotificationViewModel: ObservableObject {
     
     struct CloudKitPushNotification: View {
         
-        @StateObject private var vm = ClouKitPushNotificationViewModel()
+        @StateObject private var vm = CloudKitPushNotificationViewModel()
         @StateObject private var pushNotificationManager = PushNotificationManager()
         
         var body: some View {
