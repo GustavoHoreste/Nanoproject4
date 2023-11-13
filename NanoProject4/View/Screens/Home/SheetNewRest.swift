@@ -70,6 +70,7 @@ struct SheetNewRest: View {
                             .frame(width: 120, height: 50)
                             .background(.black)
                             .background(in: RoundedRectangle(cornerRadius: 13))
+                            .tint(.white)
 
                     }.photosPicker(isPresented: $isPresentPicker,
                                    selection: $viewModel.imageSelection,
