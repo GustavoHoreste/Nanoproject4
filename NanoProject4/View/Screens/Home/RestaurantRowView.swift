@@ -11,10 +11,8 @@ import SwiftUI
 struct RestaurantRow: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var vm = CloudKitManager.shared
-    @Namespace var animation
     var restaurant: RestaurantModel
-    
-    
+
     var body: some View {
         
         GeometryReader{ proxy in
@@ -66,7 +64,7 @@ struct RestaurantRow: View {
                         .font(.system(size: 20, weight: .bold))
                         .foregroundStyle(.gray)
                         .padding()
-                }.matchedGeometryEffect(id: restaurant.id, in: animation)
+                }
         
             }.navigationBarBackButtonHidden(true)
              .toolbar {
@@ -79,7 +77,6 @@ struct RestaurantRow: View {
     private var toolbarItens: some View {
         Button(action: {
             dismiss()
-            
         }, label: {
             Image(systemName: "xmark.circle.fill")
                 .tint(.backButton)

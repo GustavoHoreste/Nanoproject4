@@ -25,36 +25,44 @@ struct CellRestaurantView: View {
     var body: some View {
         
         NavigationStack {
-            VStack(spacing: 0){
-                
-                if let image = restaurant.imageRest{
-                    Image(uiImage: image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 358, height: 335)
-                        .clipShape(RoundedCorner(radius: 13, corners: [.topLeft, .topRight]))
-                }
-                
-                HStack{
-                    Text(restaurant.name)
-                        .font(.system(size: 26, weight: .black))
-                        .foregroundStyle(Color(UIColor(.white)))
-                        .lineLimit(2)
-                   
-                    Spacer()
+            ZStack {
+                Rectangle()
+                    .frame(width: 380, height: 450)
+                    .foregroundStyle(.brown)
+                    .clipShape(RoundedCorner(radius: 15))
                     
-                    NavigationLink {
-                        RestaurantRow(restaurant: restaurant)
-                    } label: {
-                        Text("Abrir")
-                            .font(.system(size: 20))
+                VStack(spacing: 0){
+                    
+                    if let image = restaurant.imageRest{
+                        Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 358, height: 335)
+                            .clipShape(RoundedCorner(radius: 13, corners: [.topLeft, .topRight]))
                     }
-                }.padding()
-                    .background(Color(UIColor(.gray).withAlphaComponent(0.8)))
-                    .frame(width: 358)
-                    .clipShape(RoundedCorner(radius: 13, corners: [.bottomLeft, .bottomRight]))
+                    
+                    HStack{
+                        Text(restaurant.name)
+                            .font(.system(size: 26, weight: .black))
+                            .foregroundStyle(Color(UIColor(.white)))
+                            .lineLimit(2)
+                       
+                        Spacer()
+                        
+                        NavigationLink {
+                            RestaurantRow(restaurant: restaurant)
+                        } label: {
+                            Text("Abrir")
+                        }.buttonStyle(.borderedProminent)
+                            .controlSize(.extraLarge)
+                        
+                        
+                    }.padding()
+                        .background(.brown)
+                        .frame(width: 358)
+                        .clipShape(RoundedCorner(radius: 13, corners: [.bottomLeft, .bottomRight]))
+                }
             }
-
         }
     }
 }

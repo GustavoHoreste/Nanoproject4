@@ -14,14 +14,15 @@ struct RestaurantView: View {
     
     var body: some View {
         NavigationStack{
-            RestaurantListView(restuarants: cloudKitManager.restaurantItens)
-                .navigationTitle("Restaurantes")
-//                .sheet(isPresented: $viewModel.isOpenSheet, content: {
-//                    SheetNewRest()
-//                })
-                .toolbar {
-                    toolbarButton
-                }
+            ZStack(alignment: .bottomTrailing){
+                RestaurantListView(restuarants: cloudKitManager.restaurantItens)
+                    .navigationTitle("Restaurantes")
+                    .sheet(isPresented: $viewModel.isOpenSheet, content: {
+                        SheetNewRest()
+                    })
+            }.toolbar{
+                toolbarButton
+            }
         }.onAppear{
             cloudKitManager.fetchRequest()
             CloudKitPushNotificationViewModel.shared.requestNotificationPermissions()
@@ -35,14 +36,13 @@ struct RestaurantView: View {
 
 extension RestaurantView{
     private var toolbarButton: some View{
-        Button(action: {
+        Button{
             viewModel.togleSheetAddRest()
+        } label: {
+             Image(systemName: "plus")
             
-        }, label: {
-            Image(systemName: "plus")
-                .tint(.gray)
-
-        }).buttonStyle(.borderedProminent)
+        }.buttonStyle(.borderedProminent)
+            .controlSize(.extraLarge)
     }
 }
 

@@ -13,31 +13,16 @@ struct RestaurantListView: View {
     @State var correntItem: RestaurantModel?
 
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            ForEach(restuarants) { restaurant in
-                Button{
-                    withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7)){
-                        showDetailsPage = true
-                        correntItem = restaurant
-                    }
-                } label: {
-                    CellRestaurantView(restaurant: restaurant)
-                        .scaleEffect(restaurant.id == restaurant.id && showDetailsPage ? 1 : 0.93 )
-                }.buttonStyle(ScaledButtonStyle())
-                
-            }.overlay {
-                if showDetailsPage{
-                    showDetailView(item: correntItem)
+        NavigationStack {
+            ScrollView(.vertical, showsIndicators: false) {
+                ForEach(restuarants) { restaurant in
+                    NavigationLink{
+                        RestaurantRow(restaurant: restaurant)
+                    } label: {
+                        CellRestaurantView(restaurant: restaurant)
+                            .scaleEffect(restaurant.id == restaurant.id && showDetailsPage ? 1 : 0.93 )
+                    }.buttonStyle(ScaledButtonStyle())
                 }
-            }
-        }
-    }
-    
-    func showDetailView(item: RestaurantModel?) -> some View{
-        ScrollView{
-            VStack(spacing: 21){
-                RestaurantRow(restaurant: correntItem!)
-                    .transition(.identity)
             }
         }
     }
