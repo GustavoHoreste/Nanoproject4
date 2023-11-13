@@ -29,5 +29,5 @@ struct RestaurantIntentPreview: View {
 }
 
 #Preview {
-    RestaurantIntentPreview(restaurant: RestaurantViewModel.shared.random)
+    RestaurantIntentPreview(restaurant: RestaurantViewModel().restaurants.getRandomRestaurant()!)
 }

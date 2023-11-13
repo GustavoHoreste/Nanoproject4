@@ -13,10 +13,6 @@ import CloudKit
 
 //MARK: - ViewModel
 class RestaurantViewModel: ObservableObject{
-    
-    static var shared = RestaurantViewModel()
-    
-    private init() {}
 
     @Published var restaurants: [RestaurantModel] = RestaurantsAsset.restaurants
     @Published var isOpenSheet: Bool = false
@@ -26,16 +22,10 @@ class RestaurantViewModel: ObservableObject{
     @Published  var selectedImage: UIImage? = UIImage(resource: .restauranteAsset)
     @Published var imageSelection: PhotosPickerItem? = nil{
         didSet{
-            Task{
+             Task {
                 try? await setImage(from: imageSelection)
             }
         }
-    }
-        
-    public var random: RestaurantModel {
-        let idx = Int.random(in: 0...(restaurants.count-1))
-        let restaurant = restaurants[idx]
-        return restaurant
     }
     
     func togleSheetAddRest(){
@@ -61,12 +51,12 @@ class RestaurantViewModel: ObservableObject{
                                             isfavorite: false)
         
         CloudKitManager.shared.addItemInRecordAndNotify(name: nameRest, description: description, imageRest: selectedImage)
-    
         self.restaurants.append(newRestaurant)
     }
     
     
     ////funcao que recebe um fotoPicker e converte em UIImage
+    @MainActor
     private func setImage(from selection: PhotosPickerItem?) async throws {
         guard let selection else { return }
         do{
