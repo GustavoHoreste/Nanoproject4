@@ -8,151 +8,166 @@
 import UIKit
 import CloudKit
 
+
 enum IdentifierKeys: String{
     case identifierContainer = "iCloud.gustavoHoreste.NanoProject4"
     case recordType = "Restourants"
 }
 
+
 final class CloudKitManager: ObservableObject{
     
-    private func sendPushNotification(for restaurantName: String) {
-        CloudKitPushNotificationViewModel.shared.sendPushNotification(restaurantName: restaurantName)
-    }
-    
-    func addItemInRecordAndNotify(name: String, description: String) {
-            let newRestaurant = CKRecord(recordType: IdentifierKeys.recordType.rawValue)
-            newRestaurant["name"] = name
-            newRestaurant["description"] = description
-
-            saveItens(record: newRestaurant)
-
-            // Envie notificação push para novos restaurantes
-            sendPushNotification(for: name)
-        }
-    
     static let shared = CloudKitManager()
+    
     let dataBaseConteiner = CKContainer(identifier: IdentifierKeys.identifierContainer.rawValue).publicCloudDatabase
 
-    @Published var restaurants: [RestaurantModel]  = []
-    
-    private init() {
-        self.fetchRequest()
-    }
+    @Published var restaurantItens: [RestaurantModel]  = []
+    private var itensReturned: [RestaurantModel] = []
+
     
     //MARK: - Adionar itens a um record
     func addItemInRecord(name: String, description: String){
        let newRestaurant = CKRecord(recordType: IdentifierKeys.recordType.rawValue)
         newRestaurant["name"] = name
         newRestaurant["description"] = description
-//        newRestaurant["idItem"] = id.uuidString
         saveItens(record: newRestaurant)
     }
     
     
-    func updateItems(restaurant: RestaurantModel){
+    //MARK: - Salvar item no CloudKit
+    private func saveItens(record: CKRecord){
+        dataBaseConteiner.save(record) { _, error in
+            if error != nil{
+                print("🚨 -> Error em salvar o record: \(String(describing: error)))")
+            }
+        }
+    }
+    
+    
+    
+    //MARK: - Busca os dados no banco
+    public func fetchRequest(){
+        let query = CKQuery(recordType: IdentifierKeys.recordType.rawValue, predicate: NSPredicate(value: true))
+        query.sortDescriptors = [NSSortDescriptor(key: "name", ascending: false)]
+        let queryOperation = CKQueryOperation(query: query)
+        
+        self.restaurantItens = [RestaurantModel]()
+        self.itensReturned = [RestaurantModel]()
+        
+        queryOperation.recordMatchedBlock = { [weak self] (returdID, returnResult) in
+            switch returnResult{
+            case .success(let record):
+                guard
+                    let name = record["name"] as? String,
+                    let description = record["description"] as? String,
+                    let imageRestAsset = record["imageRest"] as? CKAsset
+                else {
+                    print("Erro: Valores inválidos no record.")
+                    return
+                }
+                
+                DispatchQueue.main.sync {
+                    if let imageConverted = imageRestAsset.toUIImage(){
+                        self?.itensReturned.append(RestaurantModel(recordID: record,
+                                                                   name: name,
+                                                                   description: description,
+                                                                   imageRest: imageConverted,
+                                                                   locationRest: "Tagua-Tinga",
+                                                                   rating: "4.9",
+                                                                   isfavorite: false))
+                    }
+                }
+                
+            case .failure(let error ):
+                print("error em recordMatchedBlock\(error)")
+            }
+        }
+        
+        queryOperation.queryResultBlock = { [weak self] result in
+            DispatchQueue.main.async {
+                self?.restaurantItens = self?.itensReturned ?? []
+            }
+        }
+        
+        dataBaseConteiner.add(queryOperation)
+    }
+    
+    
+    //MARK: - Transforma a imagem em CKAsset
+    private func convertUIimageInCKAsset(_ imageRest: UIImage?) -> CKAsset?{
+        var asset: CKAsset?
+        let imageFilename: String = "RestauranteAsset"
+        
+        guard let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent(imageFilename),
+              let data = imageRest?.jpegData(compressionQuality: 0.5)
+        else { return nil }
+                
+        do{
+            try data.write(to: url)
+            asset = CKAsset(fileURL: url)
+            
+        }catch let error{
+            print("Deu erro no save e no image: \(error)")
+        }
+
+        return asset
+    }
+    
+    
+    private func updateItems(restaurant: RestaurantModel){
         let record = restaurant.recordID
         record["name"] = "NEW NAME"
         saveItens(record: record)
     }
     
     
-    func deleteItem(indeSet: IndexSet){
+    private func deleteItem(indeSet: IndexSet){
         guard let index = indeSet.first else { return }
-        let restaurant = restaurants[index]
+        let restaurant = restaurantItens[index]
         let record = restaurant.recordID
         
         dataBaseConteiner.delete(withRecordID: record.recordID) {
             [weak self] returnedRecordID, returnedError in
             DispatchQueue.main.async {
-                self?.restaurants.remove(at: index)
+                self?.restaurantItens.remove(at: index)
             }
         }
     }
     
     
-    //MARK: - Salvar item no CloudKit
-    func saveItens(record: CKRecord){
-        dataBaseConteiner.save(record) { _, error in
-            if error != nil{
-                print("🚨 -> Error em salvar o record: \(String(describing: error)))")
-            }
-        }
-        DispatchQueue.main.async {
-            self.fetchRequest()
-        }
+    private func sendPushNotification(for restaurantName: String) {
+        CloudKitPushNotificationViewModel.shared.sendPushNotification(restaurantName: restaurantName)
     }
     
-//    func saveItens(record:CKRecord){
-//            CKContainer.default().publicCloudDatabase.save(record) {
-//                _, error in
-//                if error != nil{
-//                    print("Error saving record: (error)")
-//                } else {
-//                    DispatchQueue.main.async {
-////                        self.texts = ""
-////                        self.fetchRequest()
-//                    }
-//                }
-//            }
-//        }
+    
+    func addItemInRecordAndNotify(name: String, description: String, imageRest: UIImage!) {
+        guard let imageConverted = convertUIimageInCKAsset(imageRest) else {return}
+            
+        let newRestaurant = CKRecord(recordType: IdentifierKeys.recordType.rawValue)
+        newRestaurant["name"] = name
+        newRestaurant["description"] = description
+        newRestaurant["imageRest"] = imageConverted
+        saveItens(record: newRestaurant)
 
-    
-    //MARK: - Busca os dados no banco
-    func fetchRequest(){
-        let predicate = NSPredicate(value: true)
-        let query = CKQuery(recordType: IdentifierKeys.recordType.rawValue, predicate: predicate)
-        query.sortDescriptors = [NSSortDescriptor(key: "name", ascending: false)]
-        dataBaseConteiner.perform(query, inZoneWith: nil) {
-            records, error in 
-            if let error = error {
-                print("Error fetching records: \(error)")
-            } else if let records = records {
-                let fetchedRestaurants = records.map { RestaurantModel(recordID: $0,
-                                                                       name: $0["name"] as? String ?? "",
-                                                                       description: $0["description"] as? String ?? "",
-                                                                       imageRest: UIImage(resource: .restauranteAsset),
-                                                                       locationRest: $0["namerest"] as? String ?? "",
-                                                                       rating: "23",
-                                                                       isfavorite: false)}
-                DispatchQueue.main.async {
-//                    self.restaurants.removeAll()
-                    self.restaurants = fetchedRestaurants
-                }
-            }
-        }
+        // Envie notificação push para novos restaurantes
+        sendPushNotification(for: name)
     }
     
-//    //MARK: - Busca os dados no banco
-//    func fetchRequest(){
-//        let query = CKQuery(recordType: IdentifierKeys.recordType.rawValue, predicate: NSPredicate(value: true))
-//        query.sortDescriptors = [NSSortDescriptor(key: "name", ascending: false)]
-//        let queryOperation = CKQueryOperation(query: query)
-//        
-//        queryOperation.recordMatchedBlock = { [weak self] (returdID, returnResult) in
-//            switch returnResult{
-//            case .success(let records):
-//                let fetchedRestaurants = records.map(<#T##transform: ((CKRecord.FieldKey, CKRecordValueProtocol)) throws -> T##((CKRecord.FieldKey, CKRecordValueProtocol)) throws -> T#>)
-//            case .failure(let error ):
-//                print("error em recordMatchedBlock\(error)")
-//            }
-//        }
-//        
-//        dataBaseConteiner.perform(query, inZoneWith: nil) {
-//            records, error in
-//            if let error = error {
-//                print("Error fetching records: \(error)")
-//            } else if let records = records {
-//                let fetchedRestaurants = records.map { RestaurantModel(recordID: $0, name: $0["name"] as? String ?? "",
-//                                                                       description: $0["description"] as? String ?? "",
-//                                                                       imageRest: UIImage(resource: .restauranteAsset),
-//                                                                       locationRest: $0["namerest"] as? String ?? "",
-//                                                                       rating: "23",
-//                                                                       isfavorite: false)}
-//                DispatchQueue.main.async {
-////                    self.restaurants.removeAll()
-//                    self.restaurants = fetchedRestaurants
-//                }
-//            }
-//        }
-//    }
+    public func toggleFavoriteStatus(uuidItem: UUID) {
+        if let index = self.restaurantItens.firstIndex(where: { $0.id == uuidItem }) {
+            self.restaurantItens[index].isfavorite.toggle()
+        } else {
+            print("ID não encontrado")
+        }
+    }
+}
+
+
+extension CKAsset {
+    func toUIImage() -> UIImage? {
+        if let data = NSData(contentsOf: self.fileURL!) {
+            return UIImage(data: data as Data)
+        }
+        return nil
+    }
 }

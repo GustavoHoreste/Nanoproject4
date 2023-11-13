@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RestaurantRow: View {
     @Environment(\.dismiss) var dismiss
-    @StateObject var vm = RestaurantViewModel.shared
+    @StateObject var vm = CloudKitManager.shared
     var restaurant: RestaurantModel
     
     var body: some View {
@@ -43,7 +43,7 @@ struct RestaurantRow: View {
                                 .font(.title)
                             
                             Button(action: {
-                                self.vm.toggleFavoriteStatus(for: restaurant.id)
+                                self.vm.toggleFavoriteStatus(uuidItem: restaurant.id)
                                 
                             }, label: {
                                 Image(systemName: restaurant.isfavorite ? "heart.fill" : "heart")

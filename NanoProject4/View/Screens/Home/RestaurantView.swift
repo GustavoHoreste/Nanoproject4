@@ -13,7 +13,7 @@ struct RestaurantView: View {
     
     var body: some View {
         NavigationStack{
-            RestaurantListView(restuarants: cloudKitManager.restaurants)
+            RestaurantListView(restuarants: cloudKitManager.restaurantItens)
                 .navigationTitle("Restaurantes")
                 .sheet(isPresented: $viewModel.isOpenSheet, content: {
                     SheetNewRest()
@@ -28,10 +28,11 @@ struct RestaurantView: View {
         }
         .refreshable {
             cloudKitManager.fetchRequest()
-            
         }
     }
-    
+}
+
+extension RestaurantView{
     private var toolbarButton: some View{
         Button(action: {
             viewModel.togleSheetAddRest()

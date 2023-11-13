@@ -11,7 +11,6 @@ import PhotosUI
 import CloudKit
 
 
-
 //MARK: - ViewModel
 class RestaurantViewModel: ObservableObject{
     
@@ -51,6 +50,7 @@ class RestaurantViewModel: ObservableObject{
         imageSelection = nil
     }
     
+    
     public func creatNewRestaurant(){
         let newRestaurant = RestaurantModel(recordID: CKRecord(recordType: IdentifierKeys.recordType.rawValue),
                                             name: nameRest,
@@ -60,20 +60,9 @@ class RestaurantViewModel: ObservableObject{
                                             rating: "4.9",
                                             isfavorite: false)
         
-        CloudKitManager.shared.addItemInRecordAndNotify(name: nameRest, description: description)
-        
+        CloudKitManager.shared.addItemInRecordAndNotify(name: nameRest, description: description, imageRest: selectedImage)
+    
         self.restaurants.append(newRestaurant)
-    }
-      
-        
-    public func toggleFavoriteStatus(for uuidItem: UUID) {
-        if let index = self.restaurants.firstIndex(where: { $0.id == uuidItem }) {
-            print("🚨 Valor antes do toggle: \(self.restaurants[index].isfavorite)")
-            self.restaurants[index].isfavorite.toggle()
-            print("✅ Valor depois do toggle: \(self.restaurants[index].isfavorite)")
-        } else {
-            print("ID não encontrado")
-        }
     }
     
     
@@ -82,7 +71,7 @@ class RestaurantViewModel: ObservableObject{
         guard let selection else { return }
         do{
             if let data = try await selection.loadTransferable(type: Data.self){
-                selectedImage = UIImage(data: data)
+              selectedImage = UIImage(data: data)
             }
         }catch{
             print("🚨 -> Error em converter o data do picker para UIImage")
