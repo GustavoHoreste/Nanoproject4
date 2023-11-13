@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct NanoProject4App: App {
-    @StateObject var viewModel = RestaurantViewModel.shared
+    @StateObject var viewModel = RestaurantViewModel()
     
     var body: some Scene {
         WindowGroup {

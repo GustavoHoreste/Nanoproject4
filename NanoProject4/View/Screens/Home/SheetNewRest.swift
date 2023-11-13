@@ -10,7 +10,7 @@ import PhotosUI
 
 struct SheetNewRest: View {
     @Environment(\.dismiss) var dismiss
-    @StateObject var viewModel = RestaurantViewModel.shared
+    @StateObject var viewModel = RestaurantViewModel()
     @State var isPresentPicker: Bool = false
     
 

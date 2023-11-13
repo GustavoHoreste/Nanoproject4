@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RestaurantView: View {
-    @StateObject var viewModel = RestaurantViewModel.shared
+    @StateObject var viewModel = RestaurantViewModel()
     @StateObject var cloudKitManager = CloudKitManager.shared
 
     

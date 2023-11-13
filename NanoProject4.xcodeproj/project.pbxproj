@@ -26,6 +26,7 @@
 		E892763F2AFE9F4600EFA538 /* RestaurantIntentPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E892763E2AFE9F4600EFA538 /* RestaurantIntentPreview.swift */; };
 		E89276412AFE9F5A00EFA538 /* RandomRestaurantIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89276402AFE9F5A00EFA538 /* RandomRestaurantIntent.swift */; };
 		E89276432AFE9F7100EFA538 /* IntentsShortcutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89276422AFE9F7100EFA538 /* IntentsShortcutProvider.swift */; };
+		E89276462B028DB200EFA538 /* Array+RestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89276452B028DB200EFA538 /* Array+RestaurantModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		E892763E2AFE9F4600EFA538 /* RestaurantIntentPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantIntentPreview.swift; sourceTree = "<group>"; };
 		E89276402AFE9F5A00EFA538 /* RandomRestaurantIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomRestaurantIntent.swift; sourceTree = "<group>"; };
 		E89276422AFE9F7100EFA538 /* IntentsShortcutProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentsShortcutProvider.swift; sourceTree = "<group>"; };
+		E89276452B028DB200EFA538 /* Array+RestaurantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+RestaurantModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 		D9AFA28D2AF955D0004E90F7 /* NanoProject4 */ = {
 			isa = PBXGroup;
 			children = (
+				E89276442B028D9F00EFA538 /* Extensions */,
 				E892763D2AFE9F2200EFA538 /* Shortcuts */,
 				E892763B2AFE9F1600EFA538 /* Intents */,
 				D9C319E62AFD612F00CD4EC0 /* NanoProject4.entitlements */,
@@ -184,6 +187,14 @@
 				E89276422AFE9F7100EFA538 /* IntentsShortcutProvider.swift */,
 			);
 			path = Shortcuts;
+			sourceTree = "<group>";
+		};
+		E89276442B028D9F00EFA538 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E89276452B028DB200EFA538 /* Array+RestaurantModel.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +273,7 @@
 				D9C319F82AFD62C400CD4EC0 /* PushNotificationManager.swift in Sources */,
 				E89276432AFE9F7100EFA538 /* IntentsShortcutProvider.swift in Sources */,
 				D96DDA3D2AFAC71100352D63 /* CellRestaurantView.swift in Sources */,
+				E89276462B028DB200EFA538 /* Array+RestaurantModel.swift in Sources */,
 				D9C319F72AFD62C400CD4EC0 /* CloudKitCrudView.swift in Sources */,
 				D96DDA392AFAC5A400352D63 /* RestaurantViewModel.swift in Sources */,
 				D96DDA322AFAC4EA00352D63 /* RestaurantsModel.swift in Sources */,
