@@ -11,7 +11,9 @@ import SwiftUI
 struct RestaurantRow: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var vm = CloudKitManager.shared
+    @Namespace var animation
     var restaurant: RestaurantModel
+    
     
     var body: some View {
         
@@ -64,12 +66,13 @@ struct RestaurantRow: View {
                         .font(.system(size: 20, weight: .bold))
                         .foregroundStyle(.gray)
                         .padding()
-                }
+                }.matchedGeometryEffect(id: restaurant.id, in: animation)
         
             }.navigationBarBackButtonHidden(true)
              .toolbar {
                  toolbarItens
              }
+             
         }
     }
     

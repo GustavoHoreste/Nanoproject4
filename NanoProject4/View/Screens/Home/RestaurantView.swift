@@ -10,14 +10,15 @@ import SwiftUI
 struct RestaurantView: View {
     @StateObject var viewModel = RestaurantViewModel.shared
     @StateObject var cloudKitManager = CloudKitManager.shared
+
     
     var body: some View {
         NavigationStack{
             RestaurantListView(restuarants: cloudKitManager.restaurantItens)
                 .navigationTitle("Restaurantes")
-                .sheet(isPresented: $viewModel.isOpenSheet, content: {
-                    SheetNewRest()
-                })
+//                .sheet(isPresented: $viewModel.isOpenSheet, content: {
+//                    SheetNewRest()
+//                })
                 .toolbar {
                     toolbarButton
                 }

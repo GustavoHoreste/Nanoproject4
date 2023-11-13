@@ -7,26 +7,39 @@
 
 import SwiftUI
 
+struct RoundedCorner: Shape {
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
+    }
+}
+
+
+
 struct CellRestaurantView: View {
     var restaurant: RestaurantModel
     
     var body: some View {
         
         NavigationStack {
-            ZStack(alignment: .bottom){
-            
+            VStack(spacing: 0){
+                
                 if let image = restaurant.imageRest{
                     Image(uiImage: image)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 358, height: 335)
-                        .cornerRadius(13)
+                        .clipShape(RoundedCorner(radius: 13, corners: [.topLeft, .topRight]))
                 }
                 
                 HStack{
                     Text(restaurant.name)
                         .font(.system(size: 26, weight: .black))
                         .foregroundStyle(Color(UIColor(.white)))
+                        .lineLimit(2)
                    
                     Spacer()
                     
@@ -34,22 +47,14 @@ struct CellRestaurantView: View {
                         RestaurantRow(restaurant: restaurant)
                     } label: {
                         Text("Abrir")
-//                            .background(.blue)
                             .font(.system(size: 20))
                     }
-
-                    
-                    
                 }.padding()
                     .background(Color(UIColor(.gray).withAlphaComponent(0.8)))
                     .frame(width: 358)
-                    .clipShape(.rect(
-                        topLeadingRadius: 0,
-                        bottomLeadingRadius: 13,
-                        bottomTrailingRadius: 13,
-                        topTrailingRadius: 0
-                    ))
+                    .clipShape(RoundedCorner(radius: 13, corners: [.bottomLeft, .bottomRight]))
             }
+
         }
     }
 }
