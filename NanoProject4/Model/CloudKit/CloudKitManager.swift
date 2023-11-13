@@ -44,13 +44,13 @@ final class CloudKitManager: ObservableObject{
     }
     
     
-    
     //MARK: - Busca os dados no banco
     public func fetchRequest(){
         let query = CKQuery(recordType: IdentifierKeys.recordType.rawValue, predicate: NSPredicate(value: true))
         query.sortDescriptors = [NSSortDescriptor(key: "name", ascending: false)]
         let queryOperation = CKQueryOperation(query: query)
         
+    
         self.restaurantItens = [RestaurantModel]()
         self.itensReturned = [RestaurantModel]()
         

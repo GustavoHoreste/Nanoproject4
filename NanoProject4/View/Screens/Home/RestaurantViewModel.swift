@@ -23,7 +23,7 @@ class RestaurantViewModel: ObservableObject{
     @Published var description: String = ""
     @Published var nameRest: String = ""
     
-    @Published  var selectedImage: UIImage? = nil
+    @Published  var selectedImage: UIImage? = UIImage(resource: .restauranteAsset)
     @Published var imageSelection: PhotosPickerItem? = nil{
         didSet{
             Task{
@@ -46,7 +46,7 @@ class RestaurantViewModel: ObservableObject{
     public func resetVariables(){
         nameRest = ""
         description = ""
-        selectedImage = nil
+        selectedImage = UIImage(resource: .restauranteAsset)
         imageSelection = nil
     }
     

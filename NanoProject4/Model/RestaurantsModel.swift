@@ -22,16 +22,6 @@ struct RestaurantModel: Identifiable{
     var isfavorite: Bool
     
 }
-//fazer uma funcao que ire receber um ckasset e retorna um uiimage
-//func convertCKAssetToUIImage(imageRestInFormatCKAsset: CKAsset) -> UIImage? {
-//    do {
-//        let imageData = try Data(contentsOf: imageRestInFormatCKAsset.fileURL!)
-//        return UIImage(data: imageData)
-//    } catch {
-//        print("Erro ao converter CKAsset em UIImage: \(error)")
-//        return nil
-//    }
-//}
 
 
 struct RestaurantsCloudModel: Hashable{
@@ -39,7 +29,6 @@ struct RestaurantsCloudModel: Hashable{
     let nameRest: String
     let description: String
     let imageRest: CKAsset?
-
 }
 
 
