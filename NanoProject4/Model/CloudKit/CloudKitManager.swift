@@ -25,6 +25,7 @@ final class CloudKitManager: ObservableObject{
     private var itensReturned: [RestaurantModel] = []
 
     
+    
     //MARK: - Adionar itens a um record
     func addItemInRecord(name: String, description: String){
        let newRestaurant = CKRecord(recordType: IdentifierKeys.recordType.rawValue)
@@ -32,6 +33,7 @@ final class CloudKitManager: ObservableObject{
         newRestaurant["description"] = description
         saveItens(record: newRestaurant)
     }
+    
     
     
     //MARK: - Salvar item no CloudKit
@@ -42,6 +44,7 @@ final class CloudKitManager: ObservableObject{
             }
         }
     }
+    
     
     
     //MARK: - Busca os dados no banco
@@ -91,6 +94,7 @@ final class CloudKitManager: ObservableObject{
         
         dataBaseConteiner.add(queryOperation)
     }
+    
     
     
     //MARK: - Transforma a imagem em CKAsset

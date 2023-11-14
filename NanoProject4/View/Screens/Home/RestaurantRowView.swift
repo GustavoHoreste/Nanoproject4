@@ -75,13 +75,26 @@ struct RestaurantRow: View {
     }
     
     private var toolbarItens: some View {
-        Button(action: {
-            dismiss()
-        }, label: {
-            Image(systemName: "xmark.circle.fill")
-                .tint(.backButton)
-                .font(.system(size: 20))
-        })
+        HStack{
+            //Button back
+            Button{
+                dismiss()
+            } label: {
+                Image(systemName: "xmark.circle.fill")
+                    .tint(.black)
+                    .font(.system(size: 20))
+            }
+            
+            Spacer()
+            
+            Button{
+                
+            } label: {
+                Image(systemName: "ellipsis")
+                    .tint(.black)
+                    .font(.system(size: 20))
+            }
+        }
     }
 }
 
