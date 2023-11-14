@@ -55,7 +55,7 @@ struct RestaurantRow: View {
                         }
                         
                     }.padding()
-                        .background(Color(.gray.withAlphaComponent(0.8)))
+                        .background(.brown)
                     
                 }
                             

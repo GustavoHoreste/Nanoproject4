@@ -95,7 +95,6 @@ final class CloudKitManager: ObservableObject{
     
     //MARK: - Transforma a imagem em CKAsset
     private func convertUIimageInCKAsset(_ imageRest: UIImage?) -> CKAsset?{
-        var asset: CKAsset?
         let imageFilename: String = "RestauranteAsset"
         
         guard let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent(imageFilename),
@@ -104,13 +103,13 @@ final class CloudKitManager: ObservableObject{
                 
         do{
             try data.write(to: url)
-            asset = CKAsset(fileURL: url)
+            return CKAsset(fileURL: url)
             
         }catch let error{
             print("Deu erro no save e no image: \(error)")
         }
 
-        return asset
+        return nil
     }
     
     

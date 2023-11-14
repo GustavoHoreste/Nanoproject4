@@ -11,7 +11,6 @@ struct RestaurantView: View {
     @StateObject var viewModel = RestaurantViewModel()
     @StateObject var cloudKitManager = CloudKitManager.shared
 
-    
     var body: some View {
         NavigationStack{
             ZStack(alignment: .bottomTrailing){
