@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RestaurantRow: View {
     @Environment(\.dismiss) var dismiss
-    @StateObject var vm = CloudKitManager.shared
+    var vm = CloudKitManager.shared
     var restaurant: RestaurantModel
 
     var body: some View {
@@ -29,7 +29,7 @@ struct RestaurantRow: View {
                     HStack{
                         VStack(alignment: .leading){
                             Text(restaurant.name)
-                                .bold()
+                                .fontWeight(.black)
                             
                             Text(restaurant.locationRest)
                                 .bold()
@@ -68,32 +68,36 @@ struct RestaurantRow: View {
         
             }.navigationBarBackButtonHidden(true)
              .toolbar {
-                 toolbarItens
+                 ToolbarItem(placement: .topBarLeading) {
+                     toolbarItenLeft
+                 }
+                 
+                 ToolbarItem(placement: .topBarTrailing) {
+                     toolbarItenRight
+                 }
              }
              
         }
     }
     
-    private var toolbarItens: some View {
-        HStack{
-            //Button back
-            Button{
-                dismiss()
-            } label: {
-                Image(systemName: "xmark.circle.fill")
-                    .tint(.black)
-                    .font(.system(size: 20))
-            }
-            
-            Spacer()
-            
-            Button{
-                
-            } label: {
-                Image(systemName: "ellipsis")
-                    .tint(.black)
-                    .font(.system(size: 20))
-            }
+    private var toolbarItenLeft: some View {
+        Button{
+            dismiss()
+        } label: {
+            Image(systemName: "xmark.circle.fill")
+                .tint(.black)
+                .font(.system(size: 20))
+        }
+    }
+    
+    private var toolbarItenRight: some View{
+        Button{
+            let index = vm.returnIdexSet(restaurant)
+            vm.deleteItem(indeSet: index)
+        } label: {
+            Image(systemName: "trash.fill")
+                .tint(.red)
+                .font(.system(size: 20))
         }
     }
 }

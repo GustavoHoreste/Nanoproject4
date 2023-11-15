@@ -46,8 +46,8 @@ class RestaurantViewModel: ObservableObject{
                                             name: nameRest,
                                             description: description,
                                             imageRest: selectedImage,
-                                            locationRest: "Teste",
-                                            rating: "4.9",
+                                            locationRest: "Ceilandia",
+                                            rating: "4.8",
                                             isfavorite: false)
         
         CloudKitManager.shared.addItemInRecordAndNotify(name: nameRest, description: description, imageRest: selectedImage)
@@ -66,7 +66,6 @@ class RestaurantViewModel: ObservableObject{
         }catch{
             print("🚨 -> Error em converter o data do picker para UIImage")
         }
-        
     }
 }
 

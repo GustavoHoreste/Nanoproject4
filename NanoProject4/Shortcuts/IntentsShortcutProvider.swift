@@ -11,6 +11,11 @@ import AppIntents
 struct IntentsShortcutProvider: AppShortcutsProvider {
     @AppShortcutsBuilder
     static var appShortcuts: [AppShortcut] {
-        AppShortcut(intent: RandomRestaurantIntent(), phrases: ["Indicação de \(.applicationName)"], shortTitle: "Restaurante Aleatório", systemImageName: "rectangle.fill.on.rectangle.angled.fill")
+        AppShortcut(
+            intent: RandomRestaurantIntent(),
+            phrases: ["Indicação de \(.applicationName)"],
+            shortTitle: "Restaurante Aleatório",
+            systemImageName: "rectangle.fill.on.rectangle.angled.fill"
+        )
     }
 }

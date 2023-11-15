@@ -124,13 +124,16 @@ final class CloudKitManager: ObservableObject{
     }
     
     
-    private func deleteItem(indeSet: IndexSet){
+    func deleteItem(indeSet: IndexSet){
         guard let index = indeSet.first else { return }
         let restaurant = restaurantItens[index]
         let record = restaurant.recordID
-        
+
         dataBaseConteiner.delete(withRecordID: record.recordID) {
             [weak self] returnedRecordID, returnedError in
+            if let error = returnedError, error != nil {
+                print("error em deletar: \(error)")
+            }
             DispatchQueue.main.async {
                 self?.restaurantItens.remove(at: index)
             }
@@ -162,6 +165,14 @@ final class CloudKitManager: ObservableObject{
         } else {
             print("ID não encontrado")
         }
+    }
+    
+    func returnIdexSet(_ restaurantItem: RestaurantModel) -> IndexSet{
+        var index = IndexSet()
+        if let rest = self.restaurantItens.firstIndex(where: {$0.id == restaurantItem.id}){
+            index.insert(rest)
+        }
+        return index
     }
 }
 
